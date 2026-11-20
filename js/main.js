@@ -1,5 +1,6 @@
 import { pourcentage } from './estimator.js';
 import { getSpotApi, getChartApi } from './api.js';
+import { url, request } from './part2.js';
 
 const gold = document.getElementById('gold-price');
 const silver = document.getElementById('silver-price');
@@ -31,7 +32,9 @@ const baseGldUSD = getApiUSD.xau.price.toFixed(4) - (dernierPriceG.points[len].c
 const baseSlvUSD = silverPriceUSD.toFixed(4) - (dernierPriceS.points[len].c.toFixed(4) / 31.1035);
 
 let currentCurrency = localStorage.getItem("KEY") || "USD";
-currency.value = currentCurrency;
+if (currency) {
+    currency.value = currentCurrency;
+}
 
 let gld = baseGldUSD;
 let slv = baseSlvUSD;
@@ -61,7 +64,11 @@ function getActivePrices() {
 }
 
 function updateGoldSilverUI() {
-    updated.textContent = getApiMAD.updated_at.slice(11, 19);
+    if (!gold || !silver || !goldchg || !silverchg) return;
+
+    if (updated && getApiMAD?.updated_at) {
+        updated.textContent = getApiMAD.updated_at.slice(11, 19);
+    }
 
     const prices = getActivePrices();
     gold.textContent = `${prices.goldPrice} ${currentCurrency}`;
@@ -102,7 +109,7 @@ function dessinerMibyan(pointsG, pointsS, d) {
     const length = Math.min(sliceG.length, sliceS.length);
     const valuesG = sliceG.map(p => p?.c || 0);
     const valuesS = sliceS.map(p => p?.c || 0);
-    
+
     const minG = Math.min(...valuesG), maxG = Math.max(...valuesG);
     const minS = Math.min(...valuesS), maxS = Math.max(...valuesS);
     const rangeG = maxG - minG || 1;
@@ -112,15 +119,15 @@ function dessinerMibyan(pointsG, pointsS, d) {
         const pointG = sliceG[i];
         const pointS = sliceS[i];
 
-        const valeurG = pointG?.c || 0; 
-        const valeurS = pointS?.c || 0; 
+        const valeurG = pointG?.c || 0;
+        const valeurS = pointS?.c || 0;
 
         const dateObj = new Date((pointG?.t || pointS?.t || 0) * 1000);
         const dateStr = !isNaN(dateObj) ? dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
 
         const column = document.createElement('div');
-        column.className = 'flex items-end gap-1 h-full w-6 flex-shrink-0 group relative'; 
-        
+        column.className = 'flex items-end gap-1 h-full w-6 flex-shrink-0 group relative';
+
         const divG = document.createElement('div');
         divG.className = 'w-1.5 bg-yellow-500 rounded-t transition-all hover:opacity-80';
         divG.style.height = `${Math.max(((valeurG - minG) / rangeG) * 85 + 15, 10)}%`;
@@ -138,28 +145,92 @@ function dessinerMibyan(pointsG, pointsS, d) {
 }
 
 function calculateEstimate() {
+    if (!weight || !metal || !estimate) return;
+
     const w = parseFloat(weight.value) || 0;
     const m = metal.value;
     const prices = getActivePrices();
-    
-    let price = m === "gold" ? prices.goldPrice : prices.silverPrice;
+
+    const price = m === "gold" ? prices.goldPrice : prices.silverPrice;
     estimate.textContent = `${(w * price).toFixed(4)} ${currentCurrency}`;
 }
 
-currency.addEventListener('change', () => {
-    currentCurrency = currency.value;
-    localStorage.setItem("KEY", currentCurrency);
-    updateGoldSilverUI();
-    calculateEstimate();
-});
+if (currency) {
+    currency.addEventListener('change', () => {
+        currentCurrency = currency.value;
+        localStorage.setItem("KEY", currentCurrency);
+        updateGoldSilverUI();
+        calculateEstimate();
+    });
+}
 
-date.addEventListener('change', () => {
-    dessinerMibyan(dernierPriceG, dernierPriceS, date.value === "1mois" ? -30 : -7);
-});
+if (date) {
+    date.addEventListener('change', () => {
+        const nbJours = date.value === '1mois' ? -30 : -7;
+        dessinerMibyan(dernierPriceG, dernierPriceS, nbJours);
+    });
+}
 
-metal.addEventListener('change', calculateEstimate);
-weight.addEventListener('input', calculateEstimate);
+if (metal && weight) {
+    metal.addEventListener('change', calculateEstimate);
+    weight.addEventListener('input', calculateEstimate);
+}
 
 updateGoldSilverUI();
 dessinerMibyan(dernierPriceG, dernierPriceS, -7);
 calculateEstimate();
+
+const titel = document.getElementById('input1');
+const poids = document.getElementById('input2');
+const price = document.getElementById('input3');
+const ref = document.getElementById('input4');
+const btn = document.getElementById('btn');
+const eror = document.getElementById('titelError')
+
+if (btn && titel && poids && price && ref) {
+    btn.addEventListener('click', async () => {
+        const titleValue = titel.value.trim();
+        const poid = poids.value.trim();
+        const pric = price.value.trim();
+        const refr = ref.value.trim();
+
+        if (titleValue === '' || poid === '' || pric === '' || refr === '') {
+            
+            eror.classList.remove('hidden')
+
+            console.warn('Le titre est obligatoire');
+            return;
+        }
+
+        const newItem = {
+            title: titleValue,
+            poid: poid,
+            price: pric,
+            ref: refr
+        };
+
+        try {
+            const data = await request(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newItem)
+            });
+
+            console.log('Data added to db.json:', data);
+
+            titel.value = '';
+            poids.value = '';
+            price.value = '';
+            ref.value = '';
+        } catch (error) {
+            console.error(`Erreur [${error.type || 'unknown'}]:`, error.message);
+        }
+    });
+} 
+
+    
+
+
+
