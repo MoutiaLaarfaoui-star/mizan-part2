@@ -58,74 +58,168 @@
             <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink">Lingots & Pièces Précieuses</h2>
             <p class="text-gray-600 mt-2 text-sm">Découvrez notre sélection de lingots d'or et d'argent certifiés aux cours du marché.</p>
         </div>
-
-        <!-- Products Grid (Cards) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- Card 1: Lingot d'Or 10g -->
-            <div class="bg-white border border-line rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition group">
-                <div class="flex flex-col gap-4">
-                    <div class="h-44 bg-paper rounded-xl flex items-center justify-center border border-line/60 relative overflow-hidden">
-                        <span class="absolute top-3 left-3 bg-gold text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Or Pur 24K</span>
-                        <div class="w-16 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded shadow-md transform group-hover:scale-105 transition duration-300 flex items-center justify-center text-white font-serif font-bold text-xs">10g</div>
-                    </div>
-                    <div>
-                        <h3 class="font-serif text-lg font-bold text-ink">Lingot d'Or Certifié</h3>
-                        <p class="text-xs text-gray-500 mt-1">Poids : 10 Grammes • 999.9 Fine Gold</p>
-                    </div>
-                </div>
-                <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase text-gray-400 block font-semibold">Prix estimé</span>
-                        <span class="font-serif text-lg font-bold text-gold">7,450.00 MAD</span>
-                    </div>
-                    <button class="bg-ink hover:bg-gold text-white text-xs px-4 py-2.5 rounded-xl transition font-medium">Acheter</button>
-                </div>
-            </div>
-
-            <!-- Card 2: Lingot d'Or 50g -->
-            <div class="bg-white border border-line rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition group">
-                <div class="flex flex-col gap-4">
-                    <div class="h-44 bg-paper rounded-xl flex items-center justify-center border border-line/60 relative overflow-hidden">
-                        <span class="absolute top-3 left-3 bg-gold text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Or Pur 24K</span>
-                        <div class="w-20 h-28 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded shadow-md transform group-hover:scale-105 transition duration-300 flex items-center justify-center text-white font-serif font-bold text-sm">50g</div>
-                    </div>
-                    <div>
-                        <h3 class="font-serif text-lg font-bold text-ink">Lingot d'Or Investissement</h3>
-                        <p class="text-xs text-gray-500 mt-1">Poids : 50 Grammes • 999.9 Fine Gold</p>
-                    </div>
-                </div>
-                <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase text-gray-400 block font-semibold">Prix estimé</span>
-                        <span class="font-serif text-lg font-bold text-gold">37,100.00 MAD</span>
-                    </div>
-                    <button class="bg-ink hover:bg-gold text-white text-xs px-4 py-2.5 rounded-xl transition font-medium">Acheter</button>
-                </div>
-            </div>
-
-            <!-- Card 3: Lingot d'Argent 100g -->
-            <div class="bg-white border border-line rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition group">
-                <div class="flex flex-col gap-4">
-                    <div class="h-44 bg-paper rounded-xl flex items-center justify-center border border-line/60 relative overflow-hidden">
-                        <span class="absolute top-3 left-3 bg-gray-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Argent Pur</span>
-                        <div class="w-20 h-28 bg-gradient-to-br from-gray-300 to-gray-500 rounded shadow-md transform group-hover:scale-105 transition duration-300 flex items-center justify-center text-white font-serif font-bold text-sm">100g</div>
-                    </div>
-                    <div>
-                        <h3 class="font-serif text-lg font-bold text-ink">Lingot d'Argent Pur</h3>
-                        <p class="text-xs text-gray-500 mt-1">Poids : 100 Grammes • 999.0 Silver</p>
-                    </div>
-                </div>
-                <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase text-gray-400 block font-semibold">Prix estimé</span>
-                        <span class="font-serif text-lg font-bold text-gold">1,250.00 MAD</span>
-                    </div>
-                    <button class="bg-ink hover:bg-gold text-white text-xs px-4 py-2.5 rounded-xl transition font-medium">Acheter</button>
-                </div>
-            </div>
-
+        <div class="bg-white border border-line rounded-2xl p-6 flex flex-col gap-5 shadow-sm hover:shadow-md transition">
+    <h3 class="font-serif text-lg font-bold text-ink mb-1">Informations du produit</h3>
+    
+    <!-- Grille à 2 colonnes pour les inputs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Champ 1 -->
+        <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold text-gray-600 uppercase tracking-wider" for="input1">Titre / Nom</label>
+            <input id="input1" type="text" placeholder="Entrez le nom..." class="w-full rounded-xl bg-paper text-ink text-sm px-4 py-3 border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition">
         </div>
+
+        <!-- Champ 2 -->
+        <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold text-gray-600 uppercase tracking-wider" for="input2">Poids / Unité</label>
+            <input id="input2" type="number" placeholder="Ex: 10g" class="w-full rounded-xl bg-paper text-ink text-sm px-4 py-3 border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition">
+        </div>
+
+        <!-- Champ 3 -->
+        <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold text-gray-600 uppercase tracking-wider" for="input3">Prix estimé</label>
+            <input id="input3" type="number" placeholder="Ex: 7,450.00" class="w-full rounded-xl bg-paper text-ink text-sm px-4 py-3 border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition">
+        </div>
+
+        <!-- Champ 4 -->
+        <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold text-gray-600 uppercase tracking-wider" for="input4">Référence</label>
+            <input id="input4" type="text" placeholder="REF-001" class="w-full rounded-xl bg-paper text-ink text-sm px-4 py-3 border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition">
+        </div>
+
+    </div>
+            <p id="titelError" class="items-center text-center col-span-2 text-red-500 text-sm mt-1 hidden">Veuillez renseigner le titre, le poids et le prix avant d'ajouter le produit.</p>
+
+
+    <!-- Bouton de validation optionnel pour compléter le bloc -->
+    <div class="mt-2 flex justify-end">
+        <button id="btn" class="bg-ink hover:bg-gold text-white text-xs font-medium px-5 py-3 rounded-xl transition">Enregistrer</button>
+    </div>
+    
+</div>
+
+<!-- Barre de Recherche, Filtre & Tri -->
+<div class="bg-paper border border-line rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 ">
+    
+    <!-- 1. Barre de Recherche -->
+    <div class="relative w-full md:w-96">
+        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <!-- Icône de recherche (SVG) -->
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </span>
+        <input type="text" placeholder="Rechercher un produit..." class="w-full bg-paper text-ink text-sm pl-10 pr-4 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition">
+    </div>
+
+    <!-- 2. Filtre & 3. Tri (Groupés à droite) -->
+    <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+        
+        <!-- Sélecteur de Filtre -->
+        <div class="flex items-center gap-2 flex-1 sm:flex-initial">
+            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:inline">Filtrer :</span>
+            <select class="bg-paper text-ink text-sm px-3 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition w-full sm:w-auto">
+                <option value="all">Tous les produits</option>
+                <option value="gold">Or Pur</option>
+                <option value="silver">Argent Pur</option>
+            </select>
+        </div>
+
+        <!-- Sélecteur de Tri -->
+        <div class="flex items-center gap-2 flex-1 sm:flex-initial">
+            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:inline">Trier :</span>
+            <select class="bg-paper text-ink text-sm px-3 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-goldsoft transition w-full sm:w-auto">
+                <option value="default">Pertinence</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="name">Nom (A-Z)</option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
+        <!-- Products Grid (Cards) -->
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+<script type="module">
+const API_URL = 'http://localhost:3000/product';
+const container = document.getElementById('products-container');
+
+function createProductCard(item) {
+    const card = document.createElement('div');
+    card.className = 'bg-white border border-line rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition group';
+
+    const topSection = document.createElement('div');
+    topSection.className = 'flex flex-col gap-4';
+
+    const visualBox = document.createElement('div');
+    visualBox.className = 'h-44 bg-paper rounded-xl flex items-center justify-center border border-line/60 relative overflow-hidden';
+
+    const badge = document.createElement('span');
+    badge.className = 'absolute top-3 left-3 bg-gold text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase';
+    badge.textContent = 'Or Pur 24K';
+
+    const ingot = document.createElement('div');
+    ingot.className = 'w-16 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded shadow-md transform group-hover:scale-105 transition duration-300 flex items-center justify-center text-white font-serif font-bold text-xs';
+    ingot.textContent = `${item.poid ?? ''}g`;
+
+    visualBox.append(badge, ingot);
+
+    const infoBox = document.createElement('div');
+
+    const title = document.createElement('h3');
+    title.className = 'font-serif text-lg font-bold text-ink';
+    title.textContent = item.title ?? 'Sans titre';
+
+    const details = document.createElement('p');
+    details.className = 'text-xs text-gray-500 mt-1';
+    details.textContent = `Poids : ${item.poid ?? ''} Grammes • Ref: ${item.ref ?? ''}`;
+
+    infoBox.append(title, details);
+    topSection.append(visualBox, infoBox);
+
+    const footer = document.createElement('div');
+    footer.className = 'mt-6 pt-4 border-t border-line flex items-center justify-between';
+
+    const priceBox = document.createElement('div');
+
+    const priceLabel = document.createElement('span');
+    priceLabel.className = 'text-[10px] uppercase text-gray-400 block font-semibold';
+    priceLabel.textContent = 'Prix estimé';
+
+    const priceValue = document.createElement('span');
+    priceValue.className = 'font-serif text-lg font-bold text-gold';
+    priceValue.textContent = `${item.price ?? ''} MAD`;
+
+    priceBox.append(priceLabel, priceValue);
+
+    const buyBtn = document.createElement('button');
+    buyBtn.type = 'button';
+    buyBtn.className = 'bg-ink hover:bg-gold text-white text-xs px-4 py-2.5 rounded-xl transition font-medium';
+    buyBtn.textContent = 'Acheter';
+    buyBtn.addEventListener('click', () => {
+        console.log('Selected item:', item);
+    });
+
+    footer.append(priceBox, buyBtn);
+    card.append(topSection, footer);
+
+    return card;
+}
+
+async function loadProducts() {
+    try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const products = await res.json();
+        console.log('Fetched products:', products);
+        container.replaceChildren(...products.map(createProductCard));
+    } catch (err) {
+        console.error('Load error:', err);
+    }
+}
+
+loadProducts();
+</script>
 
     </main>
 
