@@ -7,6 +7,30 @@
       "ref": "jnhg",
       "metal": "gold",
       "id": 1
+    },
+    {
+      "title": "^puts",
+      "poid": 2554685,
+      "price": 59,
+      "ref": ",klkgy",
+      "metal": "gold",
+      "id": 2
+    },
+    {
+      "title": "kovf",
+      "poid": 98798,
+      "price": 59,
+      "ref": "kopjihu",
+      "metal": "gold",
+      "id": 3
+    },
+    {
+      "title": "okpjugh",
+      "poid": 522165,
+      "price": 1556,
+      "ref": "25",
+      "metal": "gold",
+      "id": 4
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
